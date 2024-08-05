@@ -6,6 +6,7 @@ phases:
       nodejs: 14
     commands:
       - echo Installing dependencies...
+      - cd my-app
       - npm install
 
   pre_build:
@@ -15,6 +16,7 @@ phases:
   build:
     commands:
       - echo Running tests...
+      - cd my-app
       - CI=true npm run test
       - echo Building the application...
       - npm run build
@@ -27,5 +29,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: build
+  base-directory: my-app/build
   discard-paths: yes
